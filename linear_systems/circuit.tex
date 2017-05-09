@@ -1,0 +1,32 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\documentclass[convert = false]{standalone}
+\usepackage[american]{circuitikz}
+\begin{document}
+\begin{circuitikz}[scale=2]
+    \def\xPortLeft{0}
+    \def\yTerminalBottom{0}
+    \def\yL{1.5}
+    \def\xL{1}
+    \def\xR{1.75}
+    \def\xC{2.25}
+    \def\xPortRight{3}
+    % left loop
+    \draw                               (\xPortLeft,\yL)
+            %to[L=$L$, o-]               (\xL, \yL)
+            to[R=$R$]                   (\xR, \yL)
+            to[short]                   (\xC,\yL)
+            to[C, l_=$C$,*-*]           (\xC,\yTerminalBottom)
+            to[short,i=$i(t)$]          (\xPortLeft,\yTerminalBottom)
+            to[open,v^>=$x(t)$,o-o]   (\xPortLeft,\yL);
+    % right branch
+    \draw                               (\xC,\yL)
+            to[short]                   (\xPortRight,\yL)
+            to[open,v^=$y(t)$,o-o]    (\xPortRight,\yTerminalBottom)
+            to[short]                   (\xC,\yTerminalBottom);
+\end{circuitikz}
+\end{document}
